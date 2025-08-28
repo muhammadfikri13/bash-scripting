@@ -1,4 +1,4 @@
-#🐚Bash-scripting
+#🐚Bash-scripting#
 _in this repo I created three simple bash scripts that are applied in cronjob_
 
 ## What is Bash?? ##
