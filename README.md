@@ -1,8 +1,8 @@
 # 🐚Bash-scripting #
-> _in this repo I created three simple bash scripts that are applied in cronjob_ | I hope this repo could be a good learning and practical documentation about Bash Scripting and simple job automation in Linux
+> _In this repository, I’ve created three simple Bash scripts designed to run as cron jobs. I hope this repo serves as a practical and insightful resource for learning Bash scripting and basic job automation in Linux._
 
 ## What is Bash?? ##
-Bash (Bourne-Again SHell) is a script language that is used to interact with Unix-like operating system such as Linux, macOS and WSL. 
+Bash (Bourne-Again SHell) is a scripting language used to interact with Unix-like operating systems such as Linux, macOS, and WSL. 
 
 ## What Bash can be used for? ##
 - Task Automation
@@ -10,12 +10,12 @@ Bash (Bourne-Again SHell) is a script language that is used to interact with Uni
 - System Management
 
 ## What is CronJob? ##
-CronJob is a feature or program that is able to run automated and scheduled task in Unix operating system like Linux.
+A CronJob is a feature or utility that allows automated and scheduled tasks to run on Unix-based operating systems such as Linux.
 
 ## How CronJob work? ##
-1. Crontab (Cron Table) = Schedule and configure the task that will be executed
-2. Daemon Cron (Crond) = Running in system background and keep checking crontab file to decide which task should be executed
-3. Execute Automatically = When the time has come, Daemon Cron will automatically execute the task or script in the background
+1 Crontab (Cron Table) – Used to schedule and configure tasks that should be executed at specific times or intervals.
+2 Cron Daemon (crond) – Runs in the background and continuously monitors the crontab file to determine which tasks need to be executed.
+3 Automatic Execution – When the scheduled time arrives, the Cron Daemon automatically runs the specified task or script in the background
 
 ## Cron Format ##
 ```markdown
@@ -39,7 +39,7 @@ Running the script **every 15 minutes**
 ```
 #!/bin/bash
 ```
-Shebang, telling the system that this script must be executed using Bash
+Shebang, tells the system that the script should be executed using the Bash shell.
 
 ```Bash
 SOURCE="/home/fikri"
@@ -47,12 +47,16 @@ DEST="/home/backups"
 DATE=$(date +"%Y%m%d_%H%M%S")
 FILENAME="backup-$DATE.tar.gz"
 ```
-Initialize the source(which directory will be backed up), dest(destination folder to save the backup file), date(the date and time when the directory has backed up), filename(the name of the backup file which contain the date and time of the execution)
+- source – Specifies the directory that will be backed up.
+- dest – Defines the destination folder where the backup file will be stored.
+- date – Captures the current date and time to timestamp the backup operation.
+- filename – Sets the name of the backup file, typically including the date and time to ensure uniqueness and traceability.
+
 
 ```
 mkdir -p $DEST
 ```
-Making sure the backup folder exist
+Making sure the backup folder exists
 
 ```
 tar -czvf $DEST/$FILENAME $SOURCE
@@ -67,7 +71,7 @@ Create compressed archive from $SOURCE to $DEST/$FILENAME using tar
 find $DEST -type f -name "backup-*.tar.gz" -mtime +7 -exec rm {} \;
 ```
 Finding file in $DEST, 
--type f = making sure that we are looing for file only
+-type f = making sure that we are looking for file only
 -name *backup-*.tar.gz = making sure that the file contain name "backup-" and have .tar.gz extension
 -mtime +7 = created more than 7x24 hour
 -exec rm {} \; = run "rm" command for every result
@@ -86,7 +90,7 @@ Log
 ```
 #!/bin/bash
 ```
-Shebang, telling the system that the script must be run using Bash
+Shebang, tells the system that the script should be executed using the Bash shell.
 
 ```
 echo "🚀 System update started..." | wall
@@ -107,7 +111,7 @@ Log screenshot of autoupdate
 ```
 #!/bin/bash
 ```
-Shebang, telling the system that the script must be run using Bash
+Shebang, tells the system that the script should be executed using the Bash shell.
 
 ```
 THRESHOLD=80
@@ -147,5 +151,4 @@ Example output in linux terminal
 ```  
 <img width="971" height="131" alt="image" src="https://github.com/user-attachments/assets/a84a94dc-7df3-4d2f-b418-42e02ff4121c" />
 
-
-Unfortunately crontab can't show the process of the backup and update. The output only can be showed through log file that I set in crontab
+Unfortunately, crontab doesn’t display the backup or update process in real time. The output can only be viewed through the log file specified in the crontab configuration
