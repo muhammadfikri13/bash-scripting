@@ -78,3 +78,51 @@ echo "Backup complete! File : $DEST/$FILENAME"
 ```
 Print out the file path of the backup
 
+**auto_update.sh**
+```
+#!/bin/bash
+```
+Shebang, telling the system that the script must be run using Bash
+
+```
+echo "🚀 System update started..." | wall
+sudo apt update -y && sudo apt full-upgrade -y && sudo apt autoremove -y
+echo "✅ System up-to-date!" | wall
+```
+Doing update using apt (Advanced Package Tool) / Debian-based Linux distributions.
+- update = update or sync package list
+- full-upgrade = upgrade all including packages that needs new dependency
+- autoremove = deletes all old or unused packages
+
+**check_disk.sh**
+```
+#!/bin/bash
+```
+Shebang, telling the system that the script must be run using Bash
+
+```
+THRESHOLD=80
+```
+THRESHOLD = Initiate the THRESHOLD number, the amound of usage that needs to be alreted
+
+```
+USAGE=$(/bin/df -h / | grep '/' | awk '{print $5}' | sed 's/%//')
+```
+Find out the current amount of disk usage by running df -h command
+- df         = means _disk free_ , showing current disk usage
+- -h         = means _human readable_ , so the output using M(mega), G(giga) measurement
+- | grep '/' = filter a line that includes "/" which contain the number of disk percentage
+- | awk      = break the line to become columns based on spaces
+- '{print $5}' = take the fifth column from the left
+- sed 's/%//'= stream editor that deletes % symbol
+- USAGE=$(_) = save the final result to USAGE variable
+
+```
+if [ $USAGE -ge $THRESHOLD ]; then
+    echo "⚠️ WARNING: Disk usage reach $USAGE%"| wall
+fi
+```
+- if ...; then  = Bash conditional structure. Run the code block if it's true
+- $USAGE        = Disk usage percentage
+- -ge           = numeric comparison operator, greater than or equal
+- $THRESHOLD    = The amound of usage that needs to be alreted
