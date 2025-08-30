@@ -76,6 +76,10 @@ Finding file in $DEST,
 echo "Backup complete! File : $DEST/$FILENAME"
 ```
 Print out the file path of the backup
+<img width="736" height="234" alt="image" src="https://github.com/user-attachments/assets/2d9c2236-7d35-414b-a459-4b8529050de4" />
+Log
+<img width="771" height="418" alt="image" src="https://github.com/user-attachments/assets/3dc6a9a8-1815-43bc-9e83-2bd024610ba7" />
+
 
 ### **auto_update.sh** ###
 ```
@@ -92,6 +96,11 @@ Doing update using apt (Advanced Package Tool) / Debian-based Linux distribution
 - update = update or sync package list
 - full-upgrade = upgrade all including packages that needs new dependency
 - autoremove = deletes all old or unused packages
+
+Log screenshot of autoupdate
+<img width="1156" height="622" alt="image" src="https://github.com/user-attachments/assets/e0cc4f26-edf9-4d42-a250-1b550da2dc9a" />
+<img width="1333" height="603" alt="image" src="https://github.com/user-attachments/assets/b2bf20e8-60fa-42bc-a15f-fe5624ad3d5b" />
+
 
 ###  **check_disk.sh** ###
 ```
@@ -125,3 +134,17 @@ fi
 - $USAGE        = Disk usage percentage
 - -ge           = numeric comparison operator, greater than or equal
 - $THRESHOLD    = The amound of usage that needs to be alreted
+
+Example output in linux terminal
+<img width="844" height="243" alt="image" src="https://github.com/user-attachments/assets/e12b4c7b-dc47-4da4-ad55-95ab73ca4188" />
+
+## Crontab ##
+```
+* * * * * /home/backups/backup.sh >> /tmp/testcron.log 2>&1
+@reboot /home/fikri/scripts/auto_update.sh >> /home/fikri/log/update/update.log 2>&1
+* * * * * /home/fikri/scripts/check_disk.sh >> /home/fikri/log/disk/disk.log 2>&1
+```
+<img width="971" height="131" alt="image" src="https://github.com/user-attachments/assets/a84a94dc-7df3-4d2f-b418-42e02ff4121c" />
+
+
+Unfortunately crontab can't show the process of the backup and update. The output only can be showed through log file that I set in crontab
