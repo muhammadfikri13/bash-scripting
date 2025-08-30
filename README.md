@@ -1,4 +1,4 @@
-#🐚Bash-scripting#
+# 🐚Bash-scripting #
 _in this repo I created three simple bash scripts that are applied in cronjob_
 
 ## What is Bash?? ##
@@ -34,9 +34,8 @@ Running the script on **7am**
 ```
 Running the script **every 15 minutes**
 
-=========================================================
 ## Script Explaination : ##
-**backup.sh**
+### **backup.sh** ###
 ```
 #!/bin/bash
 ```
@@ -78,7 +77,7 @@ echo "Backup complete! File : $DEST/$FILENAME"
 ```
 Print out the file path of the backup
 
-**auto_update.sh**
+### **auto_update.sh** ###
 ```
 #!/bin/bash
 ```
@@ -94,7 +93,7 @@ Doing update using apt (Advanced Package Tool) / Debian-based Linux distribution
 - full-upgrade = upgrade all including packages that needs new dependency
 - autoremove = deletes all old or unused packages
 
-**check_disk.sh**
+###  **check_disk.sh** ###
 ```
 #!/bin/bash
 ```
