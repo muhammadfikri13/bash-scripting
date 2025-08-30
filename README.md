@@ -34,7 +34,7 @@ Running the script on **7am**
 ```
 Running the script **every 15 minutes**
 
-## Script Explaination : ##
+## Scripts Explaination : ##
 ### **backup.sh** ###
 ```
 #!/bin/bash
