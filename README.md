@@ -1,5 +1,5 @@
 # 🐚Bash-scripting #
-_in this repo I created three simple bash scripts that are applied in cronjob_
+> _in this repo I created three simple bash scripts that are applied in cronjob_ | I hope this repo could be a good learning and practical documentation about Bash Scripting and simple job automation in Linux
 
 ## What is Bash?? ##
 Bash (Bourne-Again SHell) is a script language that is used to interact with Unix-like operating system such as Linux, macOS and WSL. 
